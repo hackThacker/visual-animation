@@ -1,0 +1,433 @@
+:root {
+    --dark-bg: #121212;
+    --primary-surface: #1E1E1E;
+    --secondary-surface: #2a2a2a;
+    --text-color: #EAEAEA;
+    --text-muted: #999;
+    --accent-color: #00bcd4; /* Cyan */
+    --font-family: 'Poppins', sans-serif;
+
+    --color-good: #4CAF50; /* Green */
+    --color-bad: #F44336; /* Red */
+    --color-neutral: #2196F3; /* Blue */
+    --color-defense: #9C27B0; /* Purple */
+    --color-data: #FFC107; /* Amber */
+    --color-warning: #FF9800; /* Orange */
+}
+
+/* --- General Styles --- */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: 95vw;
+    max-width: 1400px;
+    height: 95vh;
+    background-color: var(--primary-surface);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--secondary-surface);
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.back-link {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+.back-link:hover { color: var(--accent-color); }
+
+nav#sub-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+nav#sub-nav button {
+    background-color: var(--secondary-surface);
+    color: var(--text-color);
+    border: 1px solid #444;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+nav#sub-nav button:hover, nav#sub-nav button.active {
+    background-color: var(--accent-color);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    min-height: 0;
+}
+
+#animation-canvas {
+    flex-grow: 1;
+    background-color: var(--dark-bg);
+    border: 1px solid var(--secondary-surface);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#explanation-box {
+    height: 80px;
+    background-color: var(--secondary-surface);
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    overflow-y: auto;
+    text-align: center;
+}
+
+
+/* --- Welcome Page Styles --- */
+.welcome-container { justify-content: center; text-align: center; }
+.welcome-main {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+}
+.subtitle { font-size: 1.2rem; color: var(--text-muted); margin-top: 10px; }
+.topic-card {
+    background: var(--secondary-surface);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    text-decoration: none;
+    color: var(--text-color);
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.topic-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.2);
+}
+.topic-card h2 { margin-top: 0; color: var(--accent-color); }
+.topic-card p { color: var(--text-muted); }
+
+
+/* --- Animation Element Styles --- */
+.node, .attacker, .packet, .firewall, .server, .dns, .database, .pc, .layer, .callout {
+    position: absolute;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    padding: 5px 10px;
+    color: #fff;
+    white-space: pre;
+    text-align: center;
+}
+
+.pc { width: 80px; height: 60px; background-color: var(--color-neutral); border: 2px solid #64b5f6; }
+.server { width: 60px; height: 80px; background-color: #555; border: 2px solid #888; }
+.packet { width: 25px; height: 25px; background-color: var(--color-data); border-radius: 50%; padding: 0; }
+.attacker { width: 50px; height: 50px; background-color: var(--color-bad); border-radius: 50%; border: 2px solid #ef5350; }
+.layer { background-color: var(--secondary-surface); border: 1px solid #444; width: 120px; }
+.callout { background-color: rgba(0,0,0,0.7); border: 1px solid var(--accent-color); color: var(--accent-color); }
+.https-tunnel { position: absolute; background: linear-gradient(90deg, rgba(0,188,212,0), rgba(0,188,212,0.3), rgba(0,188,212,0)); border-radius: 50px; }
+.terminal {
+    position: absolute; top: 5%; left: 5%; right: 5%; bottom: 5%;
+    background-color: #0d0d0d; border-radius: 8px; border: 1px solid #333;
+    padding: 20px; font-family: 'Consolas', 'Courier New', monospace; font-size: 16px;
+    color: #00ff00; white-space: pre-wrap; overflow-y: auto; opacity: 0;
+}
+.malicious-text { color: var(--color-bad); font-weight: bold; background-color: rgba(244, 67, 54, 0.2); }
+
+/* --- Add these new styles to public/css/style.css --- */
+
+.packet-detailed {
+    width: 200px;
+    height: auto;
+    background-color: var(--secondary-surface);
+    border: 2px solid var(--color-neutral);
+    border-radius: 8px;
+    padding: 0;
+    flex-direction: column;
+    align-items: stretch; /* Make children fill width */
+    font-size: 13px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+.packet-title {
+    background-color: var(--color-neutral);
+    color: #fff;
+    padding: 5px;
+    font-weight: 600;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.packet-body {
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.packet-body strong {
+    color: var(--text-color);
+}
+
+/* --- ADD THESE NEW STYLES TO THE END of public/css/style.css --- */
+
+/* CIA Triad Styles */
+.cia-circle {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 5px solid var(--secondary-surface);
+    border-radius: 50%;
+}
+.cia-label {
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.cia-icon {
+    position: absolute;
+    font-size: 48px;
+    opacity: 0;
+}
+.encryption-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid var(--color-defense);
+    box-shadow: 0 0 20px var(--color-defense);
+}
+.ddos-packet {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-bad);
+    border-radius: 50%;
+}
+
+/* Kill Chain & Defense Styles */
+.timeline-bar {
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    height: 40px;
+    background-color: var(--secondary-surface);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.timeline-step {
+    color: var(--text-muted);
+    font-size: 13px;
+    transition: color 0.5s, transform 0.3s;
+}
+.timeline-step.active {
+    color: var(--color-bad);
+    font-weight: 600;
+    transform: scale(1.1);
+}
+.packet-tracer-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-warning);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-warning);
+}
+.c2-heartbeat {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-bad);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--color-bad);
+}
+.data-packet {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-data);
+    border-radius: 3px;
+}
+.siem-alert {
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    background-color: var(--color-bad);
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 15px;
+    box-shadow: 0 0 30px var(--color-bad);
+}
+.nist-circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 4px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+/* --- ADD THESE NEW STYLES to public/css/style.css for the ADVANCED Kill Chain --- */
+
+/* General Elements for this scene */
+.attacker-terminal {
+    position: absolute;
+    background-color: #0d0d0d;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    color: var(--accent-color);
+    white-space: pre;
+}
+
+.scan-packet {
+    position: absolute;
+    width: 20px;
+    height: 4px;
+    background-color: var(--color-warning);
+    border-radius: 2px;
+}
+
+.info-bubble {
+    position: absolute;
+    background-color: var(--secondary-surface);
+    border: 1px solid var(--color-neutral);
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.code-line {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: var(--color-good);
+}
+
+.email-client {
+    position: absolute;
+    background-color: #2d3748;
+    border-radius: 8px;
+    border: 1px solid #4a5568;
+    overflow: hidden;
+}
+.email-header {
+    background-color: #1a202c;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.email-body {
+    padding: 10px;
+    font-size: 12px;
+}
+.email-attachment {
+    background-color: #4a5568;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.email-attachment:hover {
+    background-color: var(--color-bad);
+}
+
+.memory-bar {
+    position: absolute;
+    height: 30px;
+    background-color: var(--secondary-surface);
+    border: 1px solid #444;
+    display: flex;
+}
+.memory-segment {
+    height: 100%;
+    background-color: var(--color-neutral);
+}
+.memory-exploit-code {
+    height: 100%;
+    background: repeating-linear-gradient(45deg, var(--color-bad), var(--color-bad) 5px, var(--color-warning) 5px, var(--color-warning) 10px);
+}
+
+.filesystem, .registry {
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    background-color: var(--secondary-surface);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.c2-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear infinite;
+}
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.zip-file {
+    font-size: 32px;
+}
