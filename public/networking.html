@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Foundations | Animator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">&larr; Home</a>
+            <h1>Networking Foundations</h1>
+            <nav id="sub-nav">
+                <button data-anim="tcpip">TCP/IP Model</button>
+                <button data-anim="dns">DNS Lookup</button>
+                <button data-anim="http">HTTP vs HTTPS</button>
+                <button data-anim="dhcp">DHCP (DORA)</button>
+            </nav>
+        </header>
+        <main>
+            <div id="animation-canvas"></div>
+            <div id="explanation-box">
+                <p>Select a concept from the navigation above to begin the animation.</p>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/networking.js"></script>
+</body>
+</html>

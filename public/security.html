@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Security | Animator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">&larr; Home</a>
+            <h1>Core Security Concepts</h1>
+            <nav id="sub-nav">
+                <button data-anim="cia">CIA Triad</button>
+                <button data-anim="killchain">Cyber Kill Chain</button>
+                <button data-anim="defense">MITRE ATT&CK / NIST</button>
+            </nav>
+        </header>
+        <main>
+            <div id="animation-canvas"></div>
+            <div id="explanation-box">
+                <p>Visualizing the principles of attack and defense.</p>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/security.js"></script>
+</body>
+</html>

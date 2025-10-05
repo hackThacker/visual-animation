@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operating Systems | Animator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">&larr; Home</a>
+            <h1>Operating Systems Command Line</h1>
+            <nav id="sub-nav">
+                <button data-anim="linux">Linux: `ps aux`</button>
+                <button data-anim="windows">Windows: `netstat -ano`</button>
+            </nav>
+        </header>
+        <main>
+            <div id="animation-canvas"></div>
+            <div id="explanation-box">
+                <p>Simulating command-line tools to inspect a system's state.</p>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/os.js"></script>
+</body>
+</html>
